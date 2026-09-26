@@ -1,5 +1,6 @@
 using System;
 using Sys = Cosmos.Kernel.System;
+using Utils = Tinos_mobile.Utilities;
 
 namespace Tinos_mobile.kernel
 {

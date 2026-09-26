@@ -16,10 +16,12 @@
     <PackageReference Include="Cosmos.Kernel.System" Version="3.0.89" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tinos_mobile.Applications\Tinos_mobile.Applications.csproj" />
     <ProjectReference Include="..\Tinos_mobile.arm64\Tinos_mobile.arm64.csproj" />
     <ProjectReference Include="..\Tinos_mobile.common\Tinos_mobile.common.csproj" />
     <ProjectReference Include="..\Tinos_mobile.Drivers\Tinos_mobile.Drivers.csproj" />
     <ProjectReference Include="..\Tinos_mobile.UI\Tinos_mobile.UI.csproj" />
+    <ProjectReference Include="..\Tinos_mobile.Utilities\Tinos_mobile.Utilities.csproj" />
   </ItemGroup>
 
 </Project>
