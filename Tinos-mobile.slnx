@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Tinos_mobile.Drivers/Tinos_mobile.Drivers.csproj" />
+  <Project Path="Tinos_mobile.kernel/Tinos_mobile.kernel.csproj" />
+  <Project Path="Tinos_mobile.UI/Tinos_mobile.UI.csproj" />
+</Solution>
