@@ -1,5 +1,9 @@
 <Solution>
+  <Project Path="Tinos_mobile.Applications/Tinos_mobile.Applications.csproj" Id="85cebde8-851f-43d4-a134-103061a90edf" />
+  <Project Path="Tinos_mobile.arm64/Tinos_mobile.arm64.csproj" Id="01068249-2db1-4b17-8c3b-3a80b688f64e" />
+  <Project Path="Tinos_mobile.common/Tinos_mobile.common.csproj" Id="b3dcbf1b-b4d7-4521-b536-7e9471df229c" />
   <Project Path="Tinos_mobile.Drivers/Tinos_mobile.Drivers.csproj" />
   <Project Path="Tinos_mobile.kernel/Tinos_mobile.kernel.csproj" />
   <Project Path="Tinos_mobile.UI/Tinos_mobile.UI.csproj" />
+  <Project Path="Tinos_mobile.Utilities/Tinos_mobile.Utilities.csproj" Id="7af468c8-5192-4817-9471-714bcdce7d81" />
 </Solution>
