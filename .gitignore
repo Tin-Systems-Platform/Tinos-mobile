@@ -365,3 +365,10 @@ FodyWeavers.xsd
 # COSMOS output
 output-arm64/
 output-x64/
+
+# EDK2 stuff
+edk2-exynos7885/
+
+## Stuff for Samsung SM-A105FN (Galaxy A10) device
+stock_boot/
+build_artifacts/
