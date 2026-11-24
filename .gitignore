@@ -370,6 +370,3 @@ output-x64/
 stock_boot/
 build_artifacts/
 staging/
-
-# limine stuff
-Limine/
