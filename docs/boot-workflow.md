@@ -32,7 +32,7 @@ The chain needs alignment before it can work as documented:
 - The builder copies `BOOTAA64.EFI` to `staging/BOOTAA64.EFI`; the packer looks for `staging/limine/BOOTAA64.EFI`.
 - The packer places the Cosmos output at `/cosmos.bin`; the Limine config asks for `/boot/Tinos_mobile.kernel.elf`.
 - The packer's EDK2 input path is a fixed build-tree path, while the preparation script stages firmware at `staging/UEFI.fd`.
-- The solution and Cosmos project names the kernel `Tinos_mobile.kernel`; the packer expects `MyCosmosOS.bin`.
+- The solution and Cosmos project names the kernel `Tinos_mobile.kernel`; the packer expects `Tinos_mobile.kernel.bin`.
 
 These are concrete file/name discrepancies, separate from lower-level questions such as whether the chosen Android boot image fields, DTB handoff, or load offsets are correct on a target device.
 

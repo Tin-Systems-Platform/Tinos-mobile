@@ -43,7 +43,7 @@ The kernel project is `Tinos_mobile.kernel/Tinos_mobile.kernel.csproj`; the solu
 cosmos build --project ./Tinos_mobile.kernel/Tinos_mobile.kernel.csproj -c Release
 ```
 
-The script assumes the result is at `Tinos_mobile.kernel/output-arm64/MyCosmosOS.bin`. Confirm the actual output for your Cosmos SDK version. The checked-in Limine configuration instead names `Tinos_mobile.kernel.elf` at `/boot/Tinos_mobile.kernel.elf`; these names and locations do not currently agree.
+The script assumes the result is at `Tinos_mobile.kernel/output-arm64/Tinos_mobile.kernel.bin`. Confirm the actual output for your Cosmos SDK version. The checked-in Limine configuration instead names `Tinos_mobile.kernel.elf` at `/boot/Tinos_mobile.kernel.elf`; these names and locations do not currently agree.
 
 The kernel entry point currently writes `TEST` in `BeforeRun()` and has an empty `Run()` method. This is a bring-up skeleton, not a complete mobile operating system.
 
@@ -54,7 +54,7 @@ The packaging helper is `Build-bootable-image-sm-a105fs.sh`. It expects a DTB at
 Before using this stage, reconcile the current checked-in script assumptions:
 
 - The environment script stages Limine at `staging/BOOTAA64.EFI`, while the packer reads `staging/limine/BOOTAA64.EFI`.
-- The packer copies `MyCosmosOS.bin` as `/cosmos.bin`, while `Tinos_mobile.kernel/Bootloader/limine.conf` requests `/boot/Tinos_mobile.kernel.elf`.
+- The packer copies `Tinos_mobile.kernel.bin` as `/cosmos.bin`, while `Tinos_mobile.kernel/Bootloader/limine.conf` requests `/boot/Tinos_mobile.kernel.elf`.
 - The packer uses a fixed EDK2 firmware path under `edk2-exynos7885/workspace/Build/...`; the environment script instead discovers the first `*UEFI.fd` and stages it as `staging/UEFI.fd`.
 - The `mkbootimg` base, offsets, page size, OS version, and patch level are sample values in the script. Its comment explicitly says to replace the offsets with values for the unpacked target boot image.
 
@@ -66,7 +66,7 @@ The script can produce an image only when its inputs exist and its tools accept 
 | --- | --- | --- |
 | EDK2 | `staging/UEFI.fd` | Exynos UEFI firmware payload |
 | Limine | `staging/BOOTAA64.EFI` | ARM64 UEFI bootloader |
-| Cosmos | Expected by packer: `Tinos_mobile.kernel/output-arm64/MyCosmosOS.bin` | Kernel payload (verify SDK output name) |
+| Cosmos | Expected by packer: `Tinos_mobile.kernel/output-arm64/Tinos_mobile.kernel.bin` | Kernel payload (verify SDK output name) |
 | Image packaging | `build_artifacts/uefi_boot.img`, `build_artifacts/uefi_boot.tar` | Android boot image and Odin archive |
 
 ## Troubleshooting

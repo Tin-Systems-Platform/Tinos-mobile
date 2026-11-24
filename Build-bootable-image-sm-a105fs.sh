@@ -32,7 +32,7 @@ mmd -i "$RAMDISK_IMG" ::/EFI
 mmd -i "$RAMDISK_IMG" ::/EFI/BOOT
 mcopy -i "$RAMDISK_IMG" "$LIMINE_EFI" ::/EFI/BOOT/BOOTAA64.EFI
 mcopy -i "$RAMDISK_IMG" "$LIMINE_CFG" ::/limine.conf
-mcopy -i "$RAMDISK_IMG" "$COSMOS_OUT/MyCosmosOS.bin" ::/cosmos.bin # Match path in limine.conf
+mcopy -i "$RAMDISK_IMG" "$COSMOS_OUT/Tinos_mobile.kernel.bin" ::/cosmos.bin # Match path in limine.conf
 
 # --- 4. APPEND DTB TO EDK2 PAYLOAD ---
 echo "[3/4] Preparing EDK2 kernel payload..."
