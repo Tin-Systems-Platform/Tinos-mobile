@@ -32,50 +32,36 @@ command -v aarch64-linux-gnu-gcc >/dev/null || {
 
 # --- 4. REPOSITORY MANAGEMENT ---
 
-clone_or_update() {
-    local url="$1"
-    local dir="$2"
+echo "=== Initializing pinned source dependencies ==="
 
-    if [[ -d "$dir/.git" ]]; then
-        echo "Repository already exists: $dir"
-    elif [[ -e "$dir" ]]; then
-        echo "ERROR: $dir exists but is not a Git repository."
-        exit 1
-    else
-        echo "Cloning: $url"
-
-        git clone \
-            --depth 1 \
-            --recurse-submodules \
-            --shallow-submodules \
-            "$url" "$dir"
-    fi
-
-    echo "Initializing submodules: $dir"
-
-    git -C "$dir" submodule sync --recursive
-    git -C "$dir" submodule update --init --recursive
-}
-
-# --- 5. FETCH SOURCES ---
-
-echo "=== Fetching source repositories ==="
-
-clone_or_update \
-    "https://github.com/sonic011gamer/edk2-exynos7885.git" \
-    "$EDK2_EXYNOS_REPO"
-
-clone_or_update \
-    "https://github.com/tianocore/edk2.git" \
-    "$EDK2_REPO"
-
-clone_or_update \
-    "https://github.com/tianocore/edk2-platforms.git" \
-    "$EDK2_PLATFORMS_REPO"
-
-clone_or_update \
-    "https://github.com/Limine-Bootloader/Limine.git" \
+for repo in \
+    "$EDK2_EXYNOS_REPO" \
+    "$EDK2_REPO" \
+    "$EDK2_PLATFORMS_REPO" \
     "$LIMINE_REPO"
+do
+    if [[ ! -f "$repo/.git" && ! -d "$repo/.git" ]]; then
+        echo "ERROR: Expected Git submodule is missing: $repo"
+        echo "Run: git submodule update --init --recursive"
+        exit 1
+    fi
+done
+
+# Initialize exactly the commits recorded by the parent repository.
+git -C "$ROOT_DIR" submodule sync --recursive
+git -C "$ROOT_DIR" submodule update --init --recursive --depth 1
+
+echo "Pinned dependency revisions:"
+
+for repo in \
+    "$EDK2_EXYNOS_REPO" \
+    "$EDK2_REPO" \
+    "$EDK2_PLATFORMS_REPO" \
+    "$LIMINE_REPO"
+do
+    printf '%s: ' "$(basename "$repo")"
+    git -C "$repo" rev-parse --short HEAD
+done
 
 # --- 6. BUILD EDK2 ---
 
