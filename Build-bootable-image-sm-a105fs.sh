@@ -2,10 +2,10 @@
 set -euo pipefail
 
 # --- 1. PATHS & CONFIGURATION ---
-COSMOS_PROJ="./Tinos-mobile.kernel/Tinos-mobile.kernel.csproj"
-COSMOS_OUT="./Tinos-mobile.kernel/output-arm64" # Adjust target framework/RID
+COSMOS_PROJ="./Tinos_mobile.kernel/Tinos_mobile.kernel.csproj"
+COSMOS_OUT="./Tinos_mobile.kernel/output-arm64" # Adjust target framework/RID
 LIMINE_EFI="./staging/limine/BOOTAA64.EFI"
-LIMINE_CFG="./Tinos-mobile.kernel/Bootloader/limine.conf"
+LIMINE_CFG="./Tinos_mobile.kernel/Bootloader/limine.conf"
 
 EDK2_DIR="./edk2-exynos7885"
 EDK2_FD="$EDK2_DIR/workspace/Build/Exynos7885Pkg/RELEASE_GCC5/FV/EXYNOS7885PKG_UEFI.fd"
@@ -19,7 +19,7 @@ mkdir -p "$BUILD_DIR"
 
 # --- 2. BUILD COSMOS GEN3 (ARM64) ---
 echo "[1/4] Building Cosmos gen3 kernel..."
-cosmos build -c Release --project "$COSMOS_PROJ/" 
+cosmos build --project "$COSMOS_PROJ"  -c Release 
 
 # --- 3. CREATE FAT32 RAMDISK (NO SUDO NEEDED) ---
 echo "[2/4] Packing Limine + Cosmos into FAT32 RAM disk..."
