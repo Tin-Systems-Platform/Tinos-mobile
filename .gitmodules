@@ -7,3 +7,6 @@
 [submodule "edk2-exynos7885"]
 	path = edk2-exynos7885
 	url = https://github.com/sonic011gamer/edk2-exynos7885.git
+[submodule "Limine"]
+	path = Limine
+	url = https://github.com/Limine-Bootloader/Limine.git
